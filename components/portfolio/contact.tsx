@@ -59,7 +59,7 @@ export function Contact() {
               <div>
                 <p className="text-sm font-semibold text-foreground">Phone</p>
                 <a
-                  href="tel:+254700000000"
+                  href="tel:+254716194687"
                   className="text-sm text-muted-foreground transition-colors hover:text-accent"
                 >
                   +254 716194687
