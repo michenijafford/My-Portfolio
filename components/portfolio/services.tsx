@@ -4,23 +4,17 @@ import {
   Rocket,
   Headset,
   CheckCircle2,
+  Smartphone,
+  Zap,
+  Code2
+  
 } from "lucide-react"
 
 const services = [
   {
-    title: "Web Design & Development",
-    icon: Globe,
-    description:
-      "Creation of responsive, modern websites with clean UI/UX focused layouts that are mobile-friendly and performance-optimized.",
-    highlights: [
-      "Responsive, modern websites",
-      "Clean UI/UX focused layouts",
-      "Mobile-friendly & performance-optimized",
-    ],
-  },
-  {
     title: "UI/UX Design",
     icon: Palette,
+    featured: true,
     description:
       "Wireframing, prototyping, and user-centered interface design with a focus on improving usability and user experience.",
     highlights: [
@@ -30,9 +24,65 @@ const services = [
     ],
   },
   {
+    title: "Software Engineering",
+    icon: Code2,
+    featured: true,
+  description:
+    "Full-stack software engineering expertise delivering robust, scalable applications through best practices in architecture, code quality, and modern development methodologies.",
+  highlights: [
+    "Agile & DevOps practices",
+    "Code architecture & design patterns",
+    "Testing & quality assurance",
+    "Version control & CI/CD pipelines",
+    "Technical debt management",
+    "Documentation & team collaboration",
+  ],
+  },
+  {
+    title: "Web Design & Development",
+    icon: Globe,
+    featured: true,
+    description:
+      "Creation of responsive, modern websites with clean UI/UX focused layouts that are mobile-friendly and performance-optimized.",
+    highlights: [
+      "Responsive, modern websites",
+      "Clean UI/UX focused layouts",
+      "Mobile-friendly & performance-optimized",
+    ],
+  },
+  {
+    title: "Mobile & App Solutions",
+    icon: Smartphone,
+    featured: true,
+  description:
+    "Comprehensive mobile and app development expertise, delivering high-performance, user-centric applications across iOS, Android, and web platforms with seamless cross-platform experiences.",
+  highlights: [
+    "Cross-platform app development",
+    "Native iOS & Android optimization",
+    "Responsive mobile UI/UX design",
+    "App performance & scalability",
+    "Push notifications & real-time features",
+    "App store deployment & maintenance",
+  ],
+  },
+  {
+    title: "System Integration & Automation",
+    featured: true,
+    icon: Zap,
+   description:
+    "Expert in seamlessly connecting disparate systems and automating complex workflows, streamlining operations and eliminating manual processes for maximum efficiency.",
+  highlights: [
+    "Multi-system integration",
+    "Workflow automation design",
+    "API development & management",
+    "Data synchronization & mapping",
+    "Error handling & monitoring",
+    "Scalable automation infrastructure",
+  ],
+  },
+  {
     title: "App Piloting & Deployment",
     icon: Rocket,
-    featured: true,
     description:
       "Specialized in testing applications in real-world environments before full deployment, ensuring stability and readiness for large-scale implementation.",
     highlights: [

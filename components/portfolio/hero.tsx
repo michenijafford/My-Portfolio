@@ -27,7 +27,7 @@ export function Hero() {
             {/* <span className="text-accent">Micheni</span> */}
           </h1>
           <p className="mb-6 text-lg font-medium text-primary-foreground/80">
-            Software Developer | IT Technician | UI/UX & Web Design Specialist
+            Software Developer | App developer | UI/UX & Web Design Specialist | IT Technician
           </p>
           <p className="mb-8 max-w-lg text-pretty leading-relaxed text-primary-foreground/65 md:text-base">
             A dedicated and detail-oriented Software Developer and IT Technician with a strong background in programming, application deployment, and user-centered web design. Combining technical expertise with problem-solving skills to deliver efficient, scalable, and user-friendly digital solutions.
