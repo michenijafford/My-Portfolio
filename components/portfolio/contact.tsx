@@ -8,13 +8,39 @@ export function Contact() {
     name: "",
     email: "",
     message: "",
-  })
+  });
+  const [result, setResults] = useState("");
+  const [status, setStatus] = useState("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Form submission logic here
-    alert("Thank you for your message! I'll get back to you soon.")
-    setFormData({ name: "", email: "", message: "" })
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    setResults("Sending...");
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_COM_KEY || "");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus("success");
+        setResults("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => { setStatus("idle"); setResults(""); }, 5000);
+      } else {
+        setStatus("idle");
+        setResults(data.message || "Something went wrong.");
+      }
+    } catch (error) {
+      setStatus("idle");
+      setResults("Something went wrong. Please try again.");
+    }
   }
 
   return (
@@ -121,6 +147,7 @@ export function Contact() {
               </label>
               <input
                 id="name"
+                name="name"
                 type="text"
                 required
                 value={formData.name}
@@ -141,6 +168,7 @@ export function Contact() {
               </label>
               <input
                 id="email"
+                name="email"
                 type="email"
                 required
                 value={formData.email}
@@ -161,6 +189,7 @@ export function Contact() {
               </label>
               <textarea
                 id="message"
+                name="message"
                 required
                 rows={5}
                 value={formData.message}
@@ -174,11 +203,18 @@ export function Contact() {
 
             <button
               type="submit"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-transform hover:scale-105 focus:ring-2 focus:ring-accent/20 focus:outline-none"
+              disabled={status === "loading"}
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-transform hover:scale-105 focus:ring-2 focus:ring-accent/20 focus:outline-none disabled:opacity-50"
             >
               <Send className="h-4 w-4" />
-              Send Message
+              {status === "loading" ? "Sending..." : "Send Message"}
             </button>
+
+            {result && (
+              <p className={`text-sm ${status === "success" ? "text-green-600" : "text-red-500"}`}>
+                {result}
+              </p>
+            )}
           </form>
         </div>
       </div>
